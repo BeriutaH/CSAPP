@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -37,9 +38,9 @@ int main() {
 //    int b = 2312;
 //    printf("a: %d, b: %d\n", a, b);
 //    printf("小数: %f\n", 12.35);
-//    double a1 = 34.21;
-//    double a2 = 23.34;
-//    printf("a1= %f, a2= %f\n", a1, a2);
+    double a1 = 34.21;
+    double a2 = 23.34;
+    printf("a1= %f, a2= %f\n", a1, a2);
 //    // 显示小数点后两位
 //    double a3 = 3.141592653;
 //    printf("显示小数点后两位: %.2f", a3);
@@ -58,7 +59,5 @@ int main() {
 //        int tu = (int) u;
 //        printf("u = %u, tu = %d\n", u, tu);  // u = 4294967295, tu = -1
     // 默认是有符号的值，如果想要创建无符号常量，必须加上后缀字符"U" 或者 'u'，例如12345U 或者 0x1A2Bu
-    // 显式的强制类型转换
-
     return 0;
 }
