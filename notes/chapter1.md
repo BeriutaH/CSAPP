@@ -35,4 +35,4 @@ gcc -o hello hello.c
 1. 防止硬件被失控的应用程序滥用
 2. 向应用程序提供简单一致的机制来控制复杂而又通常大不相同的低级硬件设备
 ### 练习
-- [习题 1.1](../exercises/chapter1/main.c)
+- [习题 1.1](../exercises/chapter1/chapter1.c)

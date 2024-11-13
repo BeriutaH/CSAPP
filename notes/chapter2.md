@@ -54,4 +54,4 @@
 ---
 
 ### 练习
-- [习题 1.1](../exercises/chapter2/main.c)
+- [习题](../exercises/chapter2/chapter2.c)

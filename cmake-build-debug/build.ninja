@@ -49,11 +49,23 @@ cmake_ninja_workdir = /Users/bariuta/CLionProjects/CsappPro/cmake-build-debug/
 
 build cmake_object_order_depends_target_CsappPro: phony || CMakeFiles/CsappPro.dir
 
-build CMakeFiles/CsappPro.dir/exercises/chapter1/main.c.o: C_COMPILER__CsappPro_unscanned_Debug /Users/bariuta/CLionProjects/CsappPro/exercises/chapter1/main.c || cmake_object_order_depends_target_CsappPro
-  DEP_FILE = CMakeFiles/CsappPro.dir/exercises/chapter1/main.c.o.d
+build CMakeFiles/CsappPro.dir/exercises/chapter1/chapter1.c.o: C_COMPILER__CsappPro_unscanned_Debug /Users/bariuta/CLionProjects/CsappPro/exercises/chapter1/chapter1.c || cmake_object_order_depends_target_CsappPro
+  DEP_FILE = CMakeFiles/CsappPro.dir/exercises/chapter1/chapter1.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.0 -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/CsappPro.dir
   OBJECT_FILE_DIR = CMakeFiles/CsappPro.dir/exercises/chapter1
+
+build CMakeFiles/CsappPro.dir/exercises/chapter2/chapter2.c.o: C_COMPILER__CsappPro_unscanned_Debug /Users/bariuta/CLionProjects/CsappPro/exercises/chapter2/chapter2.c || cmake_object_order_depends_target_CsappPro
+  DEP_FILE = CMakeFiles/CsappPro.dir/exercises/chapter2/chapter2.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.0 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/CsappPro.dir
+  OBJECT_FILE_DIR = CMakeFiles/CsappPro.dir/exercises/chapter2
+
+build CMakeFiles/CsappPro.dir/main.c.o: C_COMPILER__CsappPro_unscanned_Debug /Users/bariuta/CLionProjects/CsappPro/main.c || cmake_object_order_depends_target_CsappPro
+  DEP_FILE = CMakeFiles/CsappPro.dir/main.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.0 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/CsappPro.dir
+  OBJECT_FILE_DIR = CMakeFiles/CsappPro.dir
 
 
 # =============================================================================
@@ -63,7 +75,7 @@ build CMakeFiles/CsappPro.dir/exercises/chapter1/main.c.o: C_COMPILER__CsappPro_
 #############################################
 # Link the executable CsappPro
 
-build CsappPro: C_EXECUTABLE_LINKER__CsappPro_Debug CMakeFiles/CsappPro.dir/exercises/chapter1/main.c.o
+build CsappPro: C_EXECUTABLE_LINKER__CsappPro_Debug CMakeFiles/CsappPro.dir/exercises/chapter1/chapter1.c.o CMakeFiles/CsappPro.dir/exercises/chapter2/chapter2.c.o CMakeFiles/CsappPro.dir/main.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -mmacosx-version-min=14.0
   OBJECT_DIR = CMakeFiles/CsappPro.dir
   POST_BUILD = :

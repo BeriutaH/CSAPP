@@ -1,5 +1,5 @@
+#include "chapter1.h"
 #include <stdio.h>
-#include <math.h>
 
 
 void speedup_ratio() {
@@ -32,8 +32,3 @@ void speedup_ratio() {
     printf("T2=%.2f, new_speed=%.2f\n", T2, new_speed);
 }
 
-
-int main() {
-    speedup_ratio();
-    return 0;
-}
