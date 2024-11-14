@@ -15,4 +15,7 @@ void move_bits();
 void hex_to_binary(uint32 n);
 void inplace_swap(int *x, int *y);
 void reverse_array(int a[], int cnt);
+void or_operation(uint32 x);
+int bis(int x, int m);
+int bic(int x, int m);
 #endif

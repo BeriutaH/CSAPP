@@ -102,6 +102,62 @@ void reverse_array(int a[], int cnt) {
     }
 }
 
+void or_operation(uint32 x) {
+    printf("x原始值:");
+    hex_to_binary(x);
+    // 掩码，保留最低有效位，忽略高位的内容
+    uint32 mask_low = 0xFF;
+    printf("mask_low:");
+    hex_to_binary(mask_low);
+    // x先跟0xFF与运算,先保证x的最低有效字节为8位
+    uint32 low_byte = x & mask_low;
+    printf("保留最低有效位:");
+    hex_to_binary(low_byte);
+    // 对高 3 个字节进行取反，然后加 1（即取补）
+    // 补码
+    printf("取补开始\n");
+    uint32 reverse_x = ~x;
+    printf("1.先将x取反:");
+    hex_to_binary(reverse_x);
+    // 掩码，保留高位，将最低有效字节清零
+    uint32 mask_height =0xFFFFFF00;
+    printf("高位掩码mask_height:");
+    hex_to_binary(mask_height);
+    printf("2.再将reverse_x跟掩码按位与操作:");
+    uint32 test_num = reverse_x & mask_height;
+    hex_to_binary(test_num);
+    printf("3.将按位与操作得到的结果+1:");
+    uint32 reverse_height = test_num+1;
+    hex_to_binary(reverse_height);
+    uint32 result = reverse_height | low_byte;
+    printf("4.最后合并高 3 个字节的取补结果和原始的最低有效字节\n最终的十六进制: %X\n",result);
+    // 最低有效位全设置成1
+    uint32 height_num = x | mask_low;
+    hex_to_binary(height_num);
+    printf("%X", height_num);
+
+}
+
+// m为1的每个位置上，将z对应的位设置为1
+int bis(int x, int m) {
+    /*
+     * m: 掩码
+     * x: 数据
+    */
+    return x | m;
+
+}
+
+// m为1的每个位置，将z对应的位设置为0, m为0的，保留原本
+int bic(int x, int m) {
+    /*
+     * m: 掩码
+     * x: 数据
+    */
+    // 位清除操作，& 操作就是都为1的时候，才为1
+    return x & ~m;
+}
+
 void function_from_chat2() {
     // int溢出，改用long
     //    long long w = 200LL * 300 * 400 * 500;
@@ -150,19 +206,24 @@ void function_from_chat2() {
                 因为这两个十六进制是八位的十六进制，一个十六进制数字对应4位二进制数字，所以八个十六进制是32位二进制
                  move_bits();
             C. 串中的什么部分不相匹配?
+             //    const char* s = "abcdef";
+            //    show_bytes((byte_pointer)s, strlen(s));
         */
-    //    const char* s = "abcdef";
-    //    show_bytes((byte_pointer)s, strlen(s));
 
-    // 亦或值，交换值的时候，不需要第三个变量，只需要取亦或值，三次，则会交换
-//    int x = 5;
-//    int y = 7;
-//    // 输出交换前的值
-//    printf("交换前的值: x = %d, y = %d\n", x, y);
-//    inplace_swap(&x, &y);
-//    // 输出交换后的值
-//    printf("交换后的值: x = %d, y = %d\n", x, y);
 
+// 2.10
+    /*
+        // 亦或值，交换值的时候，不需要第三个变量，只需要取亦或值，三次，则会交换
+        //    int x = 5;
+        //    int y = 7;
+        //    // 输出交换前的值
+        //    printf("交换前的值: x = %d, y = %d\n", x, y);
+        //    inplace_swap(&x, &y);
+        //    // 输出交换后的值
+        //    printf("交换后的值: x = %d, y = %d\n", x, y);
+     */
+
+// 2.11
     /*
      * A. 对于一个长度为奇数的数组，长度cnt= 2k+1，函效reverse_array最后一次 循环中，变量first 和last 的值分别是什么?
         * first=k, last=k
@@ -172,14 +233,62 @@ void function_from_chat2() {
         * 第三次又变成本身跟本身做对比，又变成了0
      * C. 对reverse_array的代码做哪些简单改动就能消除这个问题?
         * 判断如果是相等的，直接不做亦或取值
-     * */
-    int list[] = {1,3,4, 9,6,5,8};
-    int cnt = sizeof(list) / sizeof(list[0]);
-    // list直接传递是因为，传递一个数组作为参数时，数组会被隐式转换为一个指向数组第一个元素的指针
-    reverse_array(list, cnt);
-    for (int i = 0; i < cnt; i++) {
-        printf("%d ", list[i]);
-    }
+        int list[] = {1,3,4, 9,6,5,8};
+        //    int cnt = sizeof(list) / sizeof(list[0]);
+        //    // list直接传递是因为，传递一个数组作为参数时，数组会被隐式转换为一个指向数组第一个元素的指针
+        //    reverse_array(list, cnt);
+        //    for (int i = 0; i < cnt; i++) {
+        //        printf("%d ", list[i]);
+        //    }
+    */
+
+// 2.12
+    /*
+     * 掩码位运算: x & 0xFF 会选中 x 的 最低有效字节（即最低 8 位），其他字节（高 24 位）会被置为 0
+     * 对 于 下 面 的 值 ， 写 出 变 量 x 的 C 语 言 表 达 式 。
+     * 你 的 代 码 应 该 对 任 何 字 长w≥ 8 都能工作。我们给出了当x=0x87654321 以及w= 32 时表达式求值的结果， 仅供参考。
+        * A. x 的最低有效字节，其他位均置为0。[Ox00000021]。
+            * or_operation(0x87654321);
+        * B. 除了x的最低有效字节外，其他的位都取补，最低有效字节保持不变。[Ox789ABC21]。
+            * 取补是取反再加1
+        * C. x的最低有效字节设置成全1，共他字节都保持不变。[Ox876543EF]
+            * uint32 nn = 0x87654321;
+            * or_operation(nn);
+     */
+
+// 2.13
+    /*
+     *从20 世纪70年代末到80 年代末，Digital Equipment 的VAX计算机 是一种非常流行的机型。它没有布尔运算AND和OR指令 ，
+     * 只有bis(位设置)和 bi c(位清除)这两种指令。两种指令的输入都是一个数据字x 和一个掩码字m。
+     * 它们 生成一个结果z，2是由根据掩码m的位来修改x的位得到的。使用bis 指令，这种 修改就是在m为1的每个位置上，将z 对应的位设置为1。
+     * 使用bic 指令，这种修改 就是在m为1 的每个位置，将z 对应的位设置为0。
+     * 为了看清楚这些运算与C语官位级运算的关系，假设我们有两个函数bis 和bi c来实 现位设置和位清除操作。
+     * 只想用这两个函数，而不使用任何其他C 语言运算，来实现按 位 | 和^ 运 算 。
+     * 填 写 下列 代 码 中 缺 失 的 代 码 。 提 示 : 写 出 b i s 和 b i c 运 算 的 C 语 言 表 达
+        int x = 0b10101010;
+        int m = 0b11110000;
+        int s = bic(x,m);
+        hex_to_binary((uint32)s);
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
