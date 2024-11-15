@@ -158,6 +158,37 @@ int bic(int x, int m) {
     return x & ~m;
 }
 
+// 位运算跟逻辑运算各自对比
+void contrast() {
+    // 位运算
+    uint32 x = 0x66;  // 二进制 0110 0110
+    uint32 y = 0x39;  // 二进制 0011 1001
+    uint32 bit_and = x & y; // 0010 0000
+    uint32 bit_or = x | y; // 0111 1111
+    uint32 bit_reverse = ~x | ~y; // ~x:1001 1001 ~y: 1100 0110 |: 1101 1110
+    uint32 bit_and_not = x & !y;  // !y: 0000 0000 x将全部变成0
+    // 逻辑运算
+    int num1 = x && y;  // true
+    int num2 = x || y; // true
+    int num3 = !x || !y; // false
+    int num4 = x && ~y;  // true （做错）
+    hex_to_binary(bit_and);
+    hex_to_binary(bit_or);
+    hex_to_binary(bit_reverse);
+    hex_to_binary(bit_and_not);
+    printf("-----------------------------------\n");
+    printf("%d\n", num1);
+    printf("%d\n", num2);
+    printf("%d\n", num3);
+    printf("%d\n", num4);
+}
+
+// 判断两个数值是不是相同
+int is_equal(int x, int y) {
+    // 用^表示，如果相等，得出的结果为0，再逻辑not，返回0跟1
+    return !(x ^ y);
+}
+
 void function_from_chat2() {
     // int溢出，改用long
     //    long long w = 200LL * 300 * 400 * 500;
@@ -269,6 +300,33 @@ void function_from_chat2() {
         int m = 0b11110000;
         int s = bic(x,m);
         hex_to_binary((uint32)s);
+    */
+
+// 2.14
+    /*
+     * 假 设 x 和 y 的 字 节 值 分 别 为 O x 6 6 和 O x 3 9
+        * contrast();
+    */
+
+// 2.15
+    /*
+     * 只使用位级和還辑运算，编写一个C表达式，它等价于x==y。
+     * 换句话 说，当x 和Y相等时它将返回1，否则就返回0
+        int r = is_equal(3, 3);
+        printf("%d", r);
+    */
+
+// 2.16
+    /*
+     * 将下列十六进制的转化成二进制，然后进行位移运算，最后再转回十六进制
+        // 二进制: 1100 0011  num1<<3: 0001 1000  16进制: 0x18  num1>>2(逻辑): 0011 0000 16进制: 0x30 num1>>2(算数): 1111 0000 16进制: 0xF0
+            int num1 = 0xC3;
+        // 二进制: 0111 0101  num2<<3: 1010 1000  16进制: 0xA8  num2>>2(逻辑): 0001 1101 16进制: 0x1D num2>>2(算数): 0001 1101 16进制: 0x1D
+            int num2 = 0x75;
+        // 二进制: 1000 0111  num3<<3: 0011 1000  16进制: 0x38  num3>>2(逻辑): 0010 0001 16进制: 0x21 num3>>2(算数): 1110 0001 16进制: 0xE1
+            int num3 = 0x87;
+        // 二进制: 0110 0110  num4<<3: 0011 0000  16进制: 0x30  num4>>2(逻辑): 0001 1001 16进制: 0x19 num4>>2(算数): 0001 1001 16进制: 0x19
+            int num4 = 0x66;
     */
 
 

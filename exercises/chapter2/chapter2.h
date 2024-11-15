@@ -2,6 +2,7 @@
 #define CHAPTER2_H
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef unsigned char *byte_pointer;
 typedef unsigned int uint32;
@@ -18,4 +19,7 @@ void reverse_array(int a[], int cnt);
 void or_operation(uint32 x);
 int bis(int x, int m);
 int bic(int x, int m);
+void contrast();
+int is_equal(int x, int y);
+
 #endif
