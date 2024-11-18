@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 typedef unsigned char *byte_pointer;
 typedef unsigned int uint32;
