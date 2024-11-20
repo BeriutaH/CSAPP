@@ -22,5 +22,6 @@ int bis(int x, int m);
 int bic(int x, int m);
 void contrast();
 int is_equal(int x, int y);
-
+int fun1(unsigned word);
+int fun2(unsigned word);
 #endif
