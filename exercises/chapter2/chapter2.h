@@ -24,4 +24,7 @@ void contrast();
 int is_equal(int x, int y);
 int fun1(unsigned word);
 int fun2(unsigned word);
+float sum_elements(const float a[], unsigned length);
+int str_longer(char *s, char *t);
+int u_add_ok(unsigned x, unsigned y);
 #endif
