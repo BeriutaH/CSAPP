@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <inttypes.h>
+#include <limits.h>
 
 typedef unsigned char *byte_pointer;
 typedef unsigned int uint32;
@@ -27,4 +28,7 @@ int fun2(unsigned word);
 float sum_elements(const float a[], unsigned length);
 int str_longer(char *s, char *t);
 int u_add_ok(unsigned x, unsigned y);
+int tadd_ok(int x, int y);
+int two_add_ok(int x, int y);
+int t_sub_ok(int x, int y);
 #endif
