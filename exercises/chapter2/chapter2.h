@@ -31,4 +31,5 @@ int u_add_ok(unsigned x, unsigned y);
 int tadd_ok(int x, int y);
 int two_add_ok(int x, int y);
 int t_sub_ok(int x, int y);
+int tmult_ok(int x, int y);
 #endif
